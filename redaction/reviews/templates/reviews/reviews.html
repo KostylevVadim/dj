@@ -1,0 +1,22 @@
+{% extends 'main/base.html'%}
+{% block title %}
+{{title}}
+
+{% endblock %}
+
+{% block content %}
+<table cellpadding = "35">
+    <tbody>
+        <tr>
+          <td>
+            <h1>{{title}}</h1>
+            <h4>Автор: {{author}}</h4>
+            <h4>{{date}}</h4>
+            <h4><a href="{% url 'articles:article_content' id%}">Текст статьи </a></h4>
+            <h4><a href="">Текст рецензии</a></h4>
+          </td>
+        
+    </tbody>
+</table>
+<!-- <li class="nav-item"><a href="{% url 'users:update_profile' request.user.id%}" class="nav-link">Изменить данные</a></li> -->
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'main/base.html'%}
+{% block title %}
+Профиль
+
+{% endblock %}
+
+{% block content %}
+<!-- <h1>/redaction/media/{{image}}</h1> -->
+<img width="100" height="100" class="card-image mr-3" src="{% if user.image %}{{user.image.url}}{% endif %}" alt="/redaction/media/images/default.png">
+<!-- <img width="100" height="100" class="card-image mr-3" src="/redaction/media/images/default.png" alt="Generic placeholder image"> -->
+<h1>Имя пользователя: {{Username}}</h1>
+<h1>Имя: {{first_name}}</h1>
+
+<h1>Фамилия: {{last_name}}</h1>
+<h2>Научное звание: {{title}}</h2>
+<h2>Почта: {{email}}</h2>
+<h2>Роль: {{role}}</h2>
+<li class="nav-item"><a href="{% url 'users:update_profile' request.user.id%}" class="nav-link">Изменить данные</a></li>
+{% endblock %}

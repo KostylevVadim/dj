@@ -1,0 +1,32 @@
+{% extends 'main/base.html'%}
+{% block title %}
+{{title}}
+
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}  
+<form method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+
+  {% for field in form %}
+  <p>
+    {{ field.label_tag }}<br>
+    {{ field }}
+    {{field.help_text}}
+    {% if field.errors %}
+<ul class="errorlist">
+{% for error in field.errors %}
+<li>{{ error }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+    
+  </p>
+  {% endfor %}
+
+    <button type="submit">Отправить статью редактору</button>
+</form>
+{%endif%}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'main/base.html'%}
+{% block title %}
+{{title}}
+
+{% endblock %}
+
+{% block content %}
+<table cellpadding = "35">
+    <tbody>
+        <tr>
+          <td>
+            <h1>{{title}}</h1>
+            <h4>Автор: {{author}}</h4>
+            <h4>{{date}}</h4>
+            <h4><a href="{% url 'articles:article_content' id%}">Текст статьи </a></h4>
+            {%if request.user.role == 'Author' and author == request.user and status != 'PUB'%}
+            <h4><a href="{% url 'articles:list_of_problems' id%}">Список проблем у статьи </a></h4>
+            {%if status == 'AG1'%}
+            <h4><a href="{% url 'articles:publish' id%}">Опубликовать статью</a></h4>
+            {%endif%}
+            {%endif%}
+            <h4><a href="{% url 'articles:article_review' id%}">Текст ревью </a></h4>
+          </td>
+        
+    </tbody>
+</table>
+
+{% endblock %}

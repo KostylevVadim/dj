@@ -1,0 +1,32 @@
+{% extends 'main/base.html'%}
+{% block title %}
+{{ title }}
+
+{% endblock %}
+{% block content %}
+<div style="text-align: center;">
+<table class="primer1" width="400" border="1" style="display: inline-block;">
+    <tbody>
+        <tr>
+       <th>Название</th>
+
+       <th>Дата</th>
+       
+        </tr>
+    
+    {%for article in articles%}
+    <tr>
+        <th>{{article.title}}</th>
+        <th>{{article.date}}</th>
+        <th>
+            <a class="dropdown-item" href="{%url 'articles:article_info' article.id%}">Информация о статье</a>
+        </th>
+
+    </tr>
+    {%endfor%}
+    
+     
+ </tbody></table>
+</div>
+
+{% endblock %}
